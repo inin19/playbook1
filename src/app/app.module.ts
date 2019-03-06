@@ -3,10 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MultilanguageComponent } from './multilanguage/multilanguage.component';
+import { LanguagePipePipe } from './pipe/language-pipe.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MultilanguageComponent,
+    LanguagePipePipe
   ],
   imports: [
     BrowserModule,
