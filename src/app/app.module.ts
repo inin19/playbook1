@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MultilanguageComponent } from './multilanguage/multilanguage.component';
 import { LanguagePipePipe } from './pipe/language-pipe.pipe';
+import { D3Component } from './d3/d3.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MultilanguageComponent,
-    LanguagePipePipe
+    LanguagePipePipe,
+    D3Component
   ],
   imports: [
     BrowserModule,

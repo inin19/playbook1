@@ -21,6 +21,7 @@
     "@angular/router": "~7.2.0",
     "@types/d3": "^5.7.1",
     "core-js": "^2.5.4",
+    "crossfilter2": "^1.4.6",
     "d3": "^5.9.1",
     "ngx-bootstrap": "^3.2.0",
     "rxjs": "~6.3.3",
