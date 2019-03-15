@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { MultilanguageComponent } from './multilanguage/multilanguage.component';
 import { LanguagePipePipe } from './pipe/language-pipe.pipe';
 import { D3Component } from './d3/d3.component';
+import { D3BubbleChartComponent } from './d3-bubble-chart/d3-bubble-chart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MultilanguageComponent,
     LanguagePipePipe,
-    D3Component
+    D3Component,
+    D3BubbleChartComponent
   ],
   imports: [
     BrowserModule,
