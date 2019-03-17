@@ -1,3 +1,5 @@
+import * as d3 from 'd3';
+
 export class BubbleData {
 
   data: any[];
@@ -7,7 +9,18 @@ export class BubbleData {
   }
 
   getXaxisMax(): number {
-    return 0;
+    return d3.max(this.data.map(item => item.FREQ));
   }
+
+  getYaxisMax(): number {
+    return d3.max(this.data.map(item => item.AC));
+  }
+
+  getBubbleRange(): any {
+    return { max: d3.max(this.data.map(item => item.PCC)), min: d3.min(this.data.map(item => item.PCC)) };
+  }
+
+
+
 
 }
