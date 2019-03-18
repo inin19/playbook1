@@ -1,9 +1,28 @@
-<div class="chart-container">
-  <svg class="chart-svg">
-    <g class="chart-svg-area">
-      <g class="x axis"></g>
-      <g class="y axis"></g>
-      <g class="quadrants"></g>
-    </g>
-  </svg>
+<div #chartContainer class="chart-container">
+
+  <span id="bubbleTooltip1" class="bubbleTooltip">Tooltip</span>
+
+  <div class="bubbleChart" id="bubbleChart1" #bubbleChart>
+    <svg class="chart-svg" width="100%" height="100%">
+      <g class="chart-svg-area">
+
+        <text class="x-axis-label">Frequency</text>
+        <text class="y-axis-label">Average Cost</text>
+        
+
+        <g class="quadrants">
+          <rect class="quadrants-top-left"></rect>
+          <rect class="quadrants-top-right"></rect>
+          <rect class="quadrants-bottom-left"></rect>
+          <rect class="quadrants-bottom-right"></rect>
+        </g>
+
+        <g class="x axis"></g>
+        <g class="y axis"></g>
+
+
+      </g>
+    </svg>
+  </div>
+
 </div>

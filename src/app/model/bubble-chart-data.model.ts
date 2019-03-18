@@ -21,6 +21,10 @@ export class BubbleData {
   }
 
 
+  getJSONdata(): any[] {
+    return this.data;
+  }
+
 
 
 }

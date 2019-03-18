@@ -1,1 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
+
+$primary-font-color: #666;
+$axis-line-dark-grey: darkgrey;
+$graph-blue-primary: #5cbae6;
+$graph-green-primary: green;
+$graph-red-primary: red;
+$graph-red-secondary: rgb(255, 40, 0);
+
+html, body {
+  height: 100%;
+}
+
+
+@mixin tooltip() {
+  opacity: 0; // visibility: hidden;
+  pointer-events: none;
+  position: absolute;
+  min-width: 50px; // max-width: 200px;
+  width: auto;
+  height: auto;
+  background: none repeat scroll 0 0 #ffffff;
+  padding: 6px 10px 6px 10px;
+  border-radius: 4px;
+  text-align: left;
+  line-height: 1.3;
+  color: $primary-font-color;
+  box-shadow: 0px 3px 9px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
+}
+
+.bubbleTooltip {
+  @include tooltip();
+}

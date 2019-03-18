@@ -1,0 +1,50 @@
+$primary-font-color: #666;
+$axis-line-dark-grey: darkgrey;
+$graph-blue-primary: #5cbae6;
+$graph-green-primary: green;
+$graph-red-primary: red;
+$graph-red-secondary: rgb(255, 40, 0);
+
+
+
+.chart-container {
+  width: 80%;
+  height: 80%;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  // background-color: yellow;
+}
+
+.bubbleChart {
+  height: 100%;
+  width: 100%;
+
+  svg {
+    .tick text {
+      font-family: inherit;
+      font-size: 0.8rem;
+      fill: $primary-font-color;
+    }
+  }
+}
+
+.quadrants {
+  opacity: 0.2;
+  &-top-left {
+    fill: aqua;
+  }
+
+  &-bottom-right {
+    fill: aqua;
+  }
+
+  &-top-right {
+    fill: orangered;
+  }
+
+  &-bottom-left {
+    fill: lightgreen;
+  }
+}
