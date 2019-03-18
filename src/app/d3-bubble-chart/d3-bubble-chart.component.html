@@ -1,5 +1,8 @@
 <div #chartContainer class="chart-container">
 
+  <button class="btn btn-primary" (click)="currentYear()" >play</button>
+
+
   <span id="bubbleTooltip1" class="bubbleTooltip">Tooltip</span>
 
   <div class="bubbleChart" id="bubbleChart1" #bubbleChart>
@@ -8,7 +11,7 @@
 
         <text class="x-axis-label">Frequency</text>
         <text class="y-axis-label">Average Cost</text>
-        
+
 
         <g class="quadrants">
           <rect class="quadrants-top-left"></rect>

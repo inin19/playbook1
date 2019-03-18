@@ -32,11 +32,12 @@ export class BubbleD3 {
     this.chartContainer = chartContainer;
     this.bubbleData = bubbleData;
     this.chartElementRef = chartElementRef;
-    this.updateChart();
+    this.updateChart(bubbleData);
 
   }
 
-  updateChart() {
+  updateChart(bubbleData: BubbleData) {
+    this.bubbleData = bubbleData;
 
     const ordinalScale = d3.scaleOrdinal()
       .domain(this.bubbleData.getJSONdata().map(item => item.CLAIM_TYPE))
@@ -76,7 +77,7 @@ export class BubbleD3 {
 
     // text label for the x axis
     this.chart.select('.x-axis-label')
-      .attr('transform', `translate( ${this.width / 2} , ${this.height + this.margin.top + 15} )`)
+      .attr('transform', `translate( ${this.width / 2} , ${this.height + this.margin.top - 20} )`)
       .style('text-anchor', 'middle');
 
 
@@ -88,18 +89,21 @@ export class BubbleD3 {
       .attr('dy', '1em')
       .style('text-anchor', 'middle');
 
+
+    const adjusted = 0.05;
+
     // create scales
     this.xScale = d3.scaleLinear()
-      .domain([0, this.bubbleData.getXaxisMax()])
+      .domain([0, (1 + adjusted) * this.bubbleData.getXaxisMax()])
       .range([0, this.width]);
 
     this.yScale = d3.scaleLinear()
-      .domain([0, this.bubbleData.getYaxisMax()])
+      .domain([0, (1 + adjusted) * this.bubbleData.getYaxisMax()])
       .range([this.height, 0]);
 
     this.radiusScale = d3.scaleLinear()
       .domain([this.bubbleData.getBubbleRange().min, this.bubbleData.getBubbleRange().max])
-      .range([5, 25]);
+      .range([5, 26]);
 
 
 
@@ -176,8 +180,6 @@ export class BubbleD3 {
   handleMouseOver(tooltipDomID: string): (d, i) => void {
     return (d, i) => {
 
-      console.log('mouse over');
-
       d3.select(tooltipDomID)
         .style('opacity', 1)
         .html(
@@ -202,7 +204,7 @@ export class BubbleD3 {
   handleMouseMove(chartParent: ElementRef, tooltipDomID: string): (d, i) => void {
     return (d, i) => {
       const bounds = chartParent.nativeElement.getBoundingClientRect();
-      console.log(JSON.stringify(bounds));
+      // console.log(JSON.stringify(bounds));
 
       d3.select(tooltipDomID)
         .style('left', d3.event.clientX - bounds.left + 10 + 'px')

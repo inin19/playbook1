@@ -35,6 +35,8 @@ export class D3BubbleChartComponent implements OnInit, OnDestroy {
       this.data = data;
       this.bubbleData = new BubbleData(data);
 
+      console.log(JSON.stringify(this.data));
+
       this.bubbled3 = new BubbleD3(
         this.chartContainer,
         this.bubbleChart,
@@ -44,7 +46,7 @@ export class D3BubbleChartComponent implements OnInit, OnDestroy {
 
 
       this.resizeDetector.listenTo(this.chartContainer.nativeElement, (elem: HTMLElement) => {
-        this.bubbled3.updateChart();
+        this.bubbled3.updateChart(this.bubbleData);
       });
 
 
@@ -61,6 +63,14 @@ export class D3BubbleChartComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.resizeDetector.removeAllListeners(this.chartContainer.nativeElement);
     console.log('component destroy!');
+  }
+
+
+  currentYear() {
+    console.log('button click, changing to current year');
+
+
+
   }
 
 }
