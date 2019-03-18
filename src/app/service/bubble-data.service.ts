@@ -80,7 +80,7 @@ export class BubbleDataService {
       FREQ_CURRENT: 5,
       AC_CURRENT: 15
     }
-  ]
+  ];
 
   constructor() { }
 
