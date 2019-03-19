@@ -1,6 +1,7 @@
 <div #chartContainer class="chart-container">
 
-  <button class="btn btn-primary" (click)="currentYear()" >play</button>
+  <button [hidden]="hidenButton" class="btn btn-primary" (click)="currentYear()">play</button>
+  <button [hidden]="!hidenButton" class="btn btn-primary" (click)="reset()">reset</button>
 
 
   <span id="bubbleTooltip1" class="bubbleTooltip">Tooltip</span>

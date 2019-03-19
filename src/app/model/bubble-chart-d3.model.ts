@@ -27,20 +27,21 @@ export class BubbleD3 {
     chartElementRef: ElementRef,
     bubbleData: BubbleData,
     tooltipDom: string,
+    data: any[]
   ) {
     this.tooltipDom = tooltipDom;
     this.chartContainer = chartContainer;
     this.bubbleData = bubbleData;
     this.chartElementRef = chartElementRef;
-    this.updateChart(bubbleData);
+    this.updateChart(bubbleData, data);
 
   }
 
-  updateChart(bubbleData: BubbleData) {
+  updateChart(bubbleData: BubbleData, data: any[]) {
     this.bubbleData = bubbleData;
 
     const ordinalScale = d3.scaleOrdinal()
-      .domain(this.bubbleData.getJSONdata().map(item => item.CLAIM_TYPE))
+      .domain(data.map(item => item.CLAIM_TYPE))
       .range(d3.schemePaired);
 
     const domID = '#' + this.chartElementRef.nativeElement.id;
@@ -103,7 +104,7 @@ export class BubbleD3 {
 
     this.radiusScale = d3.scaleLinear()
       .domain([this.bubbleData.getBubbleRange().min, this.bubbleData.getBubbleRange().max])
-      .range([5, 26]);
+      .range([5, 40]);
 
 
 
@@ -125,7 +126,7 @@ export class BubbleD3 {
 
     // update chart
     let groups = this.chart.selectAll('.group')
-      .data(this.bubbleData.getJSONdata().map(item => item.CLAIM_TYPE));
+      .data(data.map(item => item.CLAIM_TYPE));
 
     groups.exit().remove();
 
@@ -142,12 +143,12 @@ export class BubbleD3 {
 
     // rejoin data VERY IMPORTANT
     groups = this.chart.selectAll('.group')
-      .data(this.bubbleData.getJSONdata().map(item => item.CLAIM_TYPE));
+      .data(data.map(item => item.CLAIM_TYPE));
 
 
     // creating circles
     const dots = groups.selectAll('.dot')
-      .data((d) => this.bubbleData.getJSONdata().filter((item) => d === item.CLAIM_TYPE));
+      .data((d) => data.filter((item) => d === item.CLAIM_TYPE));
 
     dots.exit().remove();
 
@@ -158,7 +159,8 @@ export class BubbleD3 {
       .transition()
       .attr('r', d => this.radiusScale(d.PCC))
       .attr('cx', d => this.xScale(d.FREQ))
-      .attr('cy', d => this.yScale(d.AC));
+      .attr('cy', d => this.yScale(d.AC))
+      .duration(2000);
 
 
     dots
@@ -169,6 +171,7 @@ export class BubbleD3 {
       .attr('cx', d => this.xScale(d.FREQ))
       .attr('cy', d => this.yScale(d.AC))
       .style('fill', (d) => ordinalScale(d.CLAIM_TYPE))
+      .style('stroke', (d) => ordinalScale(d.CLAIM_TYPE))
       .on('mouseover', this.handleMouseOver(this.tooltipDom))
       .on('mousemove', this.handleMouseMove(this.chartContainer, this.tooltipDom))
       .on('mouseout', this.handleMouseOut(this.tooltipDom))
@@ -180,10 +183,14 @@ export class BubbleD3 {
   handleMouseOver(tooltipDomID: string): (d, i) => void {
     return (d, i) => {
 
+      d3.select(d3.event.currentTarget)
+        .classed('hover', true);
+
+
       d3.select(tooltipDomID)
         .style('opacity', 1)
         .html(
-          'tooltip'
+          d.CLAIM_TYPE
         );
 
     };
@@ -193,6 +200,9 @@ export class BubbleD3 {
 
   handleMouseOut(tooltipDomID: string): (d, i) => void {
     return (d, i) => {
+
+      d3.select(d3.event.currentTarget)
+        .classed('hover', false);
 
       d3.select(tooltipDomID)
         .style('opacity', 0);

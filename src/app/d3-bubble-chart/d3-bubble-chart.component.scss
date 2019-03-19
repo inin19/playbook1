@@ -35,7 +35,7 @@ $graph-red-secondary: rgb(255, 40, 0);
 }
 
 .quadrants {
-  opacity: 0.2;
+  opacity: 0.1;
   &-top-left {
     fill: aqua;
   }
@@ -51,4 +51,16 @@ $graph-red-secondary: rgb(255, 40, 0);
   &-bottom-left {
     fill: lightgreen;
   }
+}
+
+circle.dot {
+  fill-opacity: 0.6;
+  stroke-width: 2;
+}
+
+circle.dot.hover {
+  fill-opacity: 0.6;
+  stroke-width: 4;
+  stroke: grey !important;
+  stroke-opacity: 0.3
 }

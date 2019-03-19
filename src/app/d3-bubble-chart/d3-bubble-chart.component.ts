@@ -17,6 +17,7 @@ export class D3BubbleChartComponent implements OnInit, OnDestroy {
 
   bubbleData: BubbleData;
   bubbled3: BubbleD3;
+  hidenButton = false;
 
   @ViewChild('chartContainer') chartContainer: ElementRef;
   @ViewChild('bubbleChart') bubbleChart: ElementRef;
@@ -35,24 +36,25 @@ export class D3BubbleChartComponent implements OnInit, OnDestroy {
       this.data = data;
       this.bubbleData = new BubbleData(data);
 
-      console.log(JSON.stringify(this.data));
+      // console.log(JSON.stringify(this.bubbleData.getCurrentYearData()));
 
       this.bubbled3 = new BubbleD3(
         this.chartContainer,
         this.bubbleChart,
         this.bubbleData,
-        '#bubbleTooltip1'
+        '#bubbleTooltip1',
+        this.bubbleData.getPreviousYearData()
       );
 
 
       this.resizeDetector.listenTo(this.chartContainer.nativeElement, (elem: HTMLElement) => {
-        this.bubbled3.updateChart(this.bubbleData);
+        this.bubbled3.updateChart(this.bubbleData, this.bubbleData.getPreviousYearData());
       });
 
 
       console.log(`max x axis is ${this.bubbleData.getXaxisMax()}`);
       console.log(`max y axis is ${this.bubbleData.getYaxisMax()}`);
-      console.log(`bubble range is ${JSON.stringify(this.bubbleData.getBubbleRange())}`);
+      // console.log(`bubble range is ${JSON.stringify(this.bubbleData.getBubbleRange())}`);
 
     });
 
@@ -69,8 +71,13 @@ export class D3BubbleChartComponent implements OnInit, OnDestroy {
   currentYear() {
     console.log('button click, changing to current year');
 
+    this.hidenButton = !this.hidenButton;
+    this.bubbled3.updateChart(this.bubbleData, this.bubbleData.getCurrentYearData());
+  }
 
-
+  reset() {
+    this.hidenButton = !this.hidenButton;
+    this.bubbled3.updateChart(this.bubbleData, this.bubbleData.getPreviousYearData());
   }
 
 }
