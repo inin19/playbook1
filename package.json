@@ -24,6 +24,7 @@
     "d3": "^5.9.1",
     "element-resize-detector": "^1.1.15",
     "ngx-bootstrap": "^3.2.0",
+    "ngx-spinner": "^7.0.0",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"

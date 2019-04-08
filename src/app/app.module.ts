@@ -7,6 +7,9 @@ import { MultilanguageComponent } from './multilanguage/multilanguage.component'
 import { LanguagePipePipe } from './pipe/language-pipe.pipe';
 import { D3Component } from './d3/d3.component';
 import { D3BubbleChartComponent } from './d3-bubble-chart/d3-bubble-chart.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { GroupBarChartComponent } from './group-bar-chart/group-bar-chart.component';
+
 
 @NgModule({
   declarations: [
@@ -14,11 +17,13 @@ import { D3BubbleChartComponent } from './d3-bubble-chart/d3-bubble-chart.compon
     MultilanguageComponent,
     LanguagePipePipe,
     D3Component,
-    D3BubbleChartComponent
+    D3BubbleChartComponent,
+    GroupBarChartComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
