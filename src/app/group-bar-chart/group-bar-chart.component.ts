@@ -383,11 +383,10 @@ export class GroupBarChartComponent implements OnInit {
 
         let value = '';
 
-        const gap = this.x0.step() - this.x0.bandwidth();
+        // const gap = this.x0.step() - this.x0.bandwidth();
 
-        const left = this.x0(d.Pokemon) - (gap + this.x0.bandwidth()) * step;
-
-        const right = this.x0(d.Pokemon) + (this.x0.bandwidth() + gap) * step;
+        const left = this.x0(d.Pokemon) - this.x0.step() * step;
+        const right = this.x0(d.Pokemon) + this.x0.step() * step;
 
 
         action === 'right' ? value = 'translate(' + right + ',0)' : value = 'translate(' + left + ',0)';
