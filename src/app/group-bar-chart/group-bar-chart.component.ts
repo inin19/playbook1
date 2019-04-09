@@ -314,12 +314,7 @@ export class GroupBarChartComponent implements OnInit {
 
 
 
-  changeSort() {
-
-    // this.data.sort((a, b) => {
-    //   // tslint:disable-next-line: no-string-literal
-    //   return d3.ascending(a['Generation'], b['Generation']);
-    // });
+  changeSort(action: string) {
 
     console.log('change');
 
@@ -330,7 +325,7 @@ export class GroupBarChartComponent implements OnInit {
       ;
 
 
-    this.data = this.dataOriginal.slice(1, 10);
+    this.data = action === 'right' ? this.dataOriginal.slice(1, 10) : this.dataOriginal.slice(0, 9);
 
 
 

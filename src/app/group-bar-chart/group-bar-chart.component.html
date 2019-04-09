@@ -18,6 +18,6 @@
 
 <h4>Sort by:</h4>
 <div id="sort-by-controls">
-  <input type="radio" name="mode" value="Type" id="Type" checked><label for="`clickedType`"> Type</label>
-  <input type="radio" name="mode" value="Generation" id="Generation" (click)="changeSort()"><label for="clickedGeneration"> Generation</label>
+  <input type="radio" name="mode" value="Type" id="Type" checked (click)="changeSort('left')" ><label for="`clickedType`"> Type</label>
+  <input type="radio" name="mode" value="Generation" id="Generation" (click)="changeSort('right')"><label for="clickedGeneration"> Generation</label>
 </div>
