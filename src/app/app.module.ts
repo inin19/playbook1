@@ -9,6 +9,7 @@ import { D3Component } from './d3/d3.component';
 import { D3BubbleChartComponent } from './d3-bubble-chart/d3-bubble-chart.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { GroupBarChartComponent } from './group-bar-chart/group-bar-chart.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { GroupBarChartComponent } from './group-bar-chart/group-bar-chart.compon
     LanguagePipePipe,
     D3Component,
     D3BubbleChartComponent,
-    GroupBarChartComponent
+    GroupBarChartComponent,
+    RxjsComponent
   ],
   imports: [
     BrowserModule,
