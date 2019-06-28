@@ -12,9 +12,11 @@ export class TimezoneComponent implements OnInit {
   seoul = moment(1489199400000).tz('Asia/Seoul');
   ny = moment(1489199400000).tz('America/New_York');
 
-  bj: string;
+  bj: moment.Moment;
 
   now: Date;
+
+  time: number;
 
   constructor() { }
 
@@ -22,11 +24,13 @@ export class TimezoneComponent implements OnInit {
 
     this.now = new Date();
 
-    const time = this.now.getTime();
+    this.time = this.now.getTime();
 
 
 
-    this.bj = moment(time).tz('Asia/Shanghai').format();
+    this.bj = moment(this.time).tz('Asia/Shanghai');
+
+
 
 
     // console.log(`seoul ${seoul.format()}`);
