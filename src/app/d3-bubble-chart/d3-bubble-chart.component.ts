@@ -19,8 +19,8 @@ export class D3BubbleChartComponent implements OnInit, OnDestroy {
   bubbled3: BubbleD3;
   hidenButton = false;
 
-  @ViewChild('chartContainer') chartContainer: ElementRef;
-  @ViewChild('bubbleChart') bubbleChart: ElementRef;
+  @ViewChild('chartContainer', { static: true }) chartContainer: ElementRef;
+  @ViewChild('bubbleChart', { static: true }) bubbleChart: ElementRef;
 
   private resizeDetector = elementResizeDetectorMaker({ strategy: 'scroll' });
 
