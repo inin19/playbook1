@@ -189,7 +189,7 @@ export class GroupBarChartComponent implements OnInit {
 
     // only get the first 8
 
-    this.data = this.dataOriginal.slice(0, 9);
+    this.data = this.dataOriginal.slice(0, 8);
 
     // this.data = this.dataOriginal.slice(1, 10);
 
@@ -320,12 +320,14 @@ export class GroupBarChartComponent implements OnInit {
 
 
     const t = d3.transition()
-      .duration(500)
+      .duration(400)
       .ease(d3.easeLinear)
+      .ease(d3.easeCubicOut)
+
       ;
 
 
-    this.data = action === 'right' ? this.dataOriginal.slice(1, 10) : this.dataOriginal.slice(0, 9);
+    this.data = action === 'right' ? this.dataOriginal.slice(2, 10) : this.dataOriginal.slice(0, 8);
 
 
 
@@ -373,9 +375,23 @@ export class GroupBarChartComponent implements OnInit {
     this.pokemon.enter()
       .append('g')
       .attr('class', 'pokemon')
-      .attr('transform', (d) => {
-        console.log(this.x0.bandwidth());
-        return 'translate(' + this.width + ',0)';
+      .attr('transform', (d, i) => {
+        // console.log(this.x0.bandwidth(), ' ', this.x0.step());
+
+
+        const step = 2;
+
+        let value = '';
+
+        // const gap = this.x0.step() - this.x0.bandwidth();
+
+        const left = this.x0(d.Pokemon) - this.x0.step() * step;
+        const right = this.x0(d.Pokemon) + this.x0.step() * step;
+
+
+        action === 'right' ? value = 'translate(' + right + ',0)' : value = 'translate(' + left + ',0)';
+        return value;
+
       })
       .transition(t)
 
