@@ -19,6 +19,7 @@
     "@angular/platform-browser": "~8.0.3",
     "@angular/platform-browser-dynamic": "~8.0.3",
     "@angular/router": "~8.0.3",
+    "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
     "crossfilter2": "^1.4.6",
     "d3": "^5.9.1",
