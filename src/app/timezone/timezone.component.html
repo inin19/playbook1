@@ -1,27 +1,41 @@
-<p>seoul {{ seoul.format() }}</p>
-<p>new york {{ ny.format() }}</p>
+<div class="chart-container" #chartContainer>
+  <span id="areaTooltip" class="bubbleTooltip">Tooltip</span>
+  <div id="areaChart" #areaChart>
+    <svg class="chart-svg" width="100%" height="100%">
+      <g class="chart-svg-area">
 
-<hr>
-
-<div>
-  <p>
-    created time is {{ now }}
-  </p>
-  <p>
-    {{ now.getTime()  }}
-  </p>
-
-  <p>
-    time zoone offset {{ now.getTimezoneOffset() }}
-  </p>
-
-
-  <p>
-    Bejing Time {{ bj.format() }}
-  </p>
-
-  <p>
-    converting back {{ bj.valueOf() }}
-  </p>
-
+      </g>
+    </svg>
+  </div>
 </div>
+
+
+
+<!-- <div class="row">
+  <p>seoul {{ seoul.format() }}</p>
+  <p>new york {{ ny.format() }}</p>
+  <hr>
+  <div>
+    <p>
+      created time is {{ now }}
+    </p>
+    <p>
+      {{ now.getTime()  }}
+    </p>
+
+    <p>
+      time zoone offset {{ now.getTimezoneOffset() }}
+    </p>
+
+
+    <p>
+      Bejing Time {{ bj.format() }}
+    </p>
+
+    <p>
+      converting back {{ bj.valueOf() }}
+    </p>
+
+  </div>
+
+</div> -->
