@@ -120,4 +120,17 @@ export class AreaD3 {
 
   }
 
+
+  handleMouseOver(tooltipDomID: string): (d: AreaDataIFace, i: number) => void {
+    return (d, i) => {
+
+    };
+  }
+
+
+
+
+
 }
+
+
