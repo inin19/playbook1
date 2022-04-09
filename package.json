@@ -24,7 +24,7 @@
     "crossfilter2": "^1.4.6",
     "d3": "^5.9.1",
     "element-resize-detector": "^1.1.15",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "moment-timezone": "^0.5.25",
     "ngx-bootstrap": "^3.2.0",
     "ngx-spinner": "^7.0.0",
